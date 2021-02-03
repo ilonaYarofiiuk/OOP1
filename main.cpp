@@ -4,26 +4,31 @@ using namespace std;
 
 class Point {
 	private:
-		int x;
-		int y;
+		int _x;
+		int _y;
 	public:
 		Point() {};
-		Point(int x, int y) { this->x = x; this->y = y; }
-		void setX(int val) { x = val; };
-		void setY(int val) { y = val; };
-		int getY() { return y; };
-		int getX() { return x; };
+		Point(int x, int y) { this->_x = x; this->_y = y; }
+		~Point() { cout << "This is destructor call" << endl; }
+		void setX(int val) { _x = val; };
+		void setY(int val) { _y = val; };
+		int getY() { return _y; };
+		int getX() { return _x; };
 		void print();
 };
 
 
 void Point::print() {
-	cout << "Point: (" << x << ", " << y << ")" << endl;
+	cout << "Point: (" << _x << ", " << _y << ")" << endl;
 }
 
 int main() {
 	Point a(1, 2);
+	Point b;
+	Point* c = new Point(3, 5);
+	c->print();
 	a.print();
+	delete(c);
 	a.setX(10);
 	a.setY(20);
 	a.print();
